@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:14.6'
+    environment:
+      - POSTGRES_USER=localdev
+      - POSTGRES_PASSWORD=localdev
+      - POSTGRES_DB=localdev
+    ports:
+      - 54321:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_USER: gegham
+      PGADMIN_DEFAULT_EMAIL: gegham@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - 5050:80
